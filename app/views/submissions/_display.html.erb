@@ -1,0 +1,23 @@
+<% if submission.nil? %>
+    <pre class="pre-scrollable">No such submission exist.</pre>
+<% else %>
+    <% if permission %>
+        <h2>
+          <%= submission.problem_name %>
+        </h2>
+        <hr/>
+        <% if submission.problem_type == 'code' %>
+            <div class='fbinfobox'>
+              <h5>Compiler Output:</h5>
+              <%= simple_format submission.compiler_output %>
+            </div>
+            <hr/>
+        <% end %>
+        <div class="pre-scrollable">
+          <%= raw syntax_highlight(submission.submission_text, submission.lang) %>
+        </div>
+    <% else %>
+        <pre class="pre-scrollable">You don't have permission to view this submission.</pre>
+    <% end %>
+<% end %>
+

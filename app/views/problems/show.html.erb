@@ -1,0 +1,15 @@
+<% title ( t 'title.problem' ) %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to (t 'title.home'), root_path %> <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to (t 'title.problem'), problems_path %> <span class="divider">/</span>
+  </li>
+  <li class="active"><%= t 'title.show' %></li>
+</ul>
+
+<%= render :partial => 'display', :locals => { :problem => @problem} %>
+
+<%= link_to 'Edit', edit_problem_path(@problem) %> | <%= link_to 'Back', problems_path %>

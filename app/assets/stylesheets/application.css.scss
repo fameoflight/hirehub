@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require fancybox
+ *= require_tree .
+ *= require redactor-rails
+ *= require bootstrap-datepicker
+ *= require bootstrap-timepicker
+*/
+
+.content {
+  background-color: #eee;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+  -moz-border-radius: 0 0 6px 6px;
+  border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .15);
+}
+
+.shadow {
+  border: solid 1px #CCC;
+  -moz-box-shadow: 5px 5px 0px #999;
+  -webkit-box-shadow: 5px 5px 0px #999;
+  box-shadow: 5px 5px 0px #999;
+}
+
+/* Facebook Box Styles */
+.fbgreybox {
+  background-color: #f7f7f7;
+  border: 1px solid #cccccc;
+  color: #333333;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.fbbluebox {
+  background-color: #eceff6;
+  border: 1px solid #d4dae8;
+  color: #333333;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.fbinfobox {
+  background-color: #fff9d7;
+  border: 1px solid #e2c822;
+  color: #333333;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.fberrorbox {
+  background-color: #ffebe8;
+  border: 1px solid #dd3c10;
+  color: #333333;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+ol.lncode {
+  margin: 15px 0;
+  padding: 0 0 0 20px;
+  background: #e8e8e8;
+  border: 1px solid #ccc;
+  line-height: 100%;
+  font: normal 12px Courier, monospace;
+}
+
+ol.lncode li {
+  margin: 0 0 0 20px;
+  padding: 5px 10px 5px 10px;
+  list-style: decimal-leading-zero;
+  line-height: 100%;
+  word-wrap: break-word;
+  border-left: 1px solid #ccc;
+  color: #999;
+  background: #fff;
+}
+
+ol.lncode li pre {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}

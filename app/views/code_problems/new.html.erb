@@ -1,0 +1,17 @@
+<% title ( t 'title.new.code_problem' ) %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to ( t 'title.home') , root_path %> <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to ( t 'title.problem') , problems_path %> <span class="divider">/</span>
+  </li>
+  <li class="active"><%= t 'title.new.code_problem' %></li>
+</ul>
+
+<h1><%= t 'title.new.code_problem' %></h1>
+
+<%= render 'new_form' %>
+
+<%= link_to ( t 'title.back' ), code_problems_path %>

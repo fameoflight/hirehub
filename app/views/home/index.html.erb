@@ -1,0 +1,9 @@
+<div class="row">
+  <% if user_signed_in? %>
+      <%= render 'signed' %>
+  <% else %>
+      <div class="span12">
+        <%= render 'unsigned' %>
+      </div>
+  <% end %>
+</div>

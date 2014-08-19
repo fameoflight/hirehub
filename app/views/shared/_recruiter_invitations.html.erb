@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+    <h2 id="sent-invitations"> Sent Invitations </h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Candidate Name</th>
+        <th>Candidate Email</th>
+        <th>Score</th>
+        <th>Sent</th>
+        <th>Finished</th>
+        <th>Review</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% current_user.invites.each do |invite| %>
+          <tr>
+            <td><%= invite.candidate_name %></td>
+            <td><%= invite.candidate_email %></td>
+            <td><%= invite.score %></td>
+            <td><%= time_ago_in_words(invite.created_at) %> ago</td>
+            <td><%= invite.finished? ? 'Yes' : 'No' %></td>
+            <td><%= link_to 'Link', solve_invite_url(invite.url_hash) %> </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

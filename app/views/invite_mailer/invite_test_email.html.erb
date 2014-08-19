@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+<p>Hello <%= @invite.candidate_name %>!</p>
+
+<p>
+  You are invited to solve the test on <%= t 'name' %> by <%= @invite.user.name %>
+</p>
+
+<p>
+  Kindly make sure you read the faq before proceeding to invite and familarize yourself with test
+  environment. <%= link_to 'Click here', faq_url %> to read the faq.
+</p>
+
+<% if @invite.candidate.no_login? %>
+    <p>
+      <%= link_to 'Setup Account', accept_user_invitation_url(@invite.candidate, :invitation_token => @invite.candidate.invitation_token) %>
+      by going to this link.
+      Once your account is setup, you can access the invite link below.
+    </p>
+<% end %>
+<p>
+  You can <%= link_to "Launch Invite", solve_invite_url(@invite.url_hash) %> using the link below.
+</p>
+
+<p>Thanks for being part of <%= t 'name' %> and have a great day!</p>
+</body>
+</html>

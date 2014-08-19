@@ -1,0 +1,16 @@
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Home', root_path %> <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to 'Invite', invites_path %> <span class="divider">/</span>
+  </li>
+  <li class="active">Edit Invite</li>
+</ul>
+
+<h1>Editing invite</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @invite %> |
+<%= link_to 'Back', invites_path %>

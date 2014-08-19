@@ -1,0 +1,54 @@
+<% title 'Invite Index' %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Home', root_path %> <span class="divider">/</span>
+  </li>
+  <li class="active">Invite</li>
+</ul>
+
+<%= link_to "Invite New Candidate", new_invite_path, :class => "btn" %> 
+<%= link_to (t 'title.new.collection'), new_collection_path, :class => "btn" %><br />
+<br/>
+
+<h3> Invite Status </h3>
+<table>
+  <thead>
+  <tr>
+    <th>Candidate Name</th>
+    <th>Candidate Email</th>
+    <th>Score</th>
+    <th>Finished</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @invites.each do |inviter| %>
+      <%= render "invite_row", :invite => inviter %>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to ( t 'title.new.code_problem') , new_code_problem_path %>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        var error_message = "<%= session[:new_collection_error] %>";
+        var error_message_url = "<%= session[:new_collection_error_url] %>";
+
+        if( error_message.length != 0 ) {
+          bootbox.dialog( error_message, [ 
+          {
+              "label" : "Yes",
+              "class" : "btn-primary",
+              "callback": function() {
+                  window.location = error_message_url
+              }
+          }, 
+          {
+              "label" : "No",
+              "class" : "btn"
+          }]);
+        }
+
+    });
+</script>

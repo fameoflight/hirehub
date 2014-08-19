@@ -1,0 +1,54 @@
+<% title ( t 'title.code_problem') %>
+<ul class="breadcrumb">
+  <li>
+    <%= link_to ( t 'title.home' ), root_path %> <span class="divider">/</span>
+  </li>
+  <li class="active"><%= t 'title.code_problem' %></li>
+</ul>
+
+<h1>Listing <%= t 'title.code_problem' %></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Problem Id</th>
+    <th>Problem Name</th>
+    <th>Score</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @code_problems.each do |code_problem| %>
+      <tr>
+        <td>
+          <%= link_to code_problem.id, preview_code_problem_path(:id => code_problem.id), :remote => true, :class => "fancyBoxLink", "data-skip-pjax" => true %>
+        </td>
+        <td>
+          <%= link_to code_problem.name, preview_code_problem_path(:id => code_problem.id), :remote => true, :class => "fancyBoxLink", "data-skip-pjax" => true %>
+        </td>
+        <td><%= code_problem.score %></td>
+        <td><%= link_to 'Edit', edit_code_problem_path(code_problem) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<div style="display:none;">
+  <div id="preview" style="width:660px;height:auto;overflow:hidden">Loading ...</div>
+</div>
+
+<%= link_to ( t 'title.new.code_problem') , new_code_problem_path %>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $(".fancyBoxLink").fancybox({
+            'href': '#preview',
+            'transitionIn': 'elastic',
+            'transitionOut': 'elastic',
+            'autoScale': true,
+            'autoDimensions': true,
+        });
+    });
+</script>

@@ -1,0 +1,28 @@
+<div class='span6 offset3'>
+  <% if @beta_list_user.nil? %>
+    <% @beta_list_user = BetaListUser.new %>
+  <% end %>
+  <% @beta_list_user.note = ( t 'beta_list.note_placeholder' ) %>
+  <%= simple_form_for(@beta_list_user, :html => {:class => 'form-horizontal'},
+      :url => request_invite_path,
+      :method => 'post') do |f| %>
+      <legend>Request Beta Access</legend>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :name, :autofocus => true, :placeholder => "name" %>
+        <%= f.input :email, :placeholder => "email" %>
+        <%= f.input :note, :input_html => { class: 'redactor' }  %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, '    Request Beta Access   ', :class => 'btn btn-primary' %>
+      </div>
+  <% end %>
+  <blockquote>
+    <p align="justify">
+      <%= t 'beta_list.rate_limit_message' %>
+    </p>
+  </blockquote>
+</div>
+
+

@@ -1,0 +1,125 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  name: "HireHub"
+  location: "Bangalore, India"
+  hello: "Hello world"
+  welcome: "Welcome to HireHub"
+  signed_in: "You are already signed as registered user."
+  invite_test_email_subject: "You are invited to solve"
+  invite_interview_email_subject: "You are scheduled to interview"
+  title:
+    home: "Home"
+    back: "Back"
+    edit: "Edit"
+    show: "Show"
+    problem: "Problem"
+    code_problem: "Code Problem"
+    collection: "Problem Set"
+    default: "HireHub simplify your hiring"
+    edit:
+      code_problem: "Edit Code Problem"
+      collection: "Edit Problem Set"
+    new: 
+      invite: "New Invite"
+      problem: "New Problem"
+      code_problem: "New Code Problem"
+      collection: "New Problem Set"
+  beta_list:
+    already_user: 'You are already registered with HireHub'
+    email_subject: 'Our chef has prepared your invite'
+    granted_access: 'Granted access to %{name}'
+    granted_access_failure: 'Failed to grant access to %{name}'
+    note_placeholder: "Optional if you have any special requirements or urgency."
+    rate_limit_message: "We rate-limit new account creation in order to ensure we have enough capacity for everyone - it may take a couple days before you receive your welcome email. Let us know if you need the service urgently."
+  demo:
+    quick_demo: "Quick Demo"
+    start_demo: "Start Demo"
+    warning:  "Warning : This is public account, make sure you don't use any personal information here."
+    shortlist_candidate: "Shortlist Candidate"
+    home_button_text: "Test Drive HireHub"
+  constants:
+    candidates: "Candidate"
+  menu:
+    dashboard: "Dashboard"
+    new_problem: "New Problem"
+    new_collection: "New Problem Set"
+    invite_candidate: "Invite Candidate"
+    interview_candidate: "Interview Candidate"
+  errors:
+   messages:
+     wrong_size: "is the wrong size (should be %{file_size})"
+     size_too_small: "is too small (should be at least %{file_size})"
+     size_too_big: "is too big (should be at most %{file_size})"
+   permission:
+    default: "You don't have permission to access this page."
+    modify_problem: "You don't have permission to modify this problem"
+    demo_user_edit: "You don't have permission to edit demo user"
+  metadata:
+    description: |
+      HireHub is simple recruiter friendly way to online candidate screening.
+      Currently finding good candidate is very difficult problem. A typical company
+      get 10 - 100 candidate for every position they advertise. That causes lots of
+      inefficiency. We want to fix this. We want companies to hire the best talent and
+      make there process efficient.At the same time we love developers, we want to serve
+      as educational platform for developers to contribute with there knowledge and learn
+      from there peers. A platform where developers can hang out and solve interesting problems
+      and have fun doing so.
+  problem:
+    create: "Problem created successfully"
+    update:
+      default: "Updated Problem successfully"
+      errors:
+        default: "Can't update problem right now"
+        sample_data: "You need to add sample input output files before modifying the problem."
+      test_data: "Updated Testdata successfully"
+      sample_data: "Updated Sample Testdata successfully"
+  invite:
+    errors:
+      no_problem: "You don't have any problems, would you like to add a problem?"
+      no_collection: "You don't have any problem set, would you like to add a problem set?"
+      nil_balance: "Sorry you don't have any invite balance, would you like to buy more balance ?"
+      not_found: "There is no such invitation in our record"
+      problem_not_found: "No such problem in problem set"
+      recruiter_finish: "Recruiter can't finish the invite"
+      already_finshed: "Invite is already finished"
+      not_agree: "You cannot enter until you agree"
+    sent: "Invite sent successfully !"
+    update: "Invite is successfully updated."
+    time_over: "Time over. No more submission allowed"
+    redirecting: "Redirecting to invite path"
+    welcome: 'Welcome to Invite'
+  interview:
+    created: "Interview is created successfully"
+    updated: "Interview is updated successfully"
+    errors:
+      not_found: "We are unable to find this interview"
+  collection:
+    errors:
+      no_problem: "You don't have any problems, would you like to add a new problem?"
+    created: "Problem Set is successfully created"
+    updated: "Problem Set is successfully updated."
+  submission:
+    errors:
+      default: "Unable to recieve submission at this time"
+    recieved: "Submission recieved sucessfully"
+    syntax_check: "Sytax Check Ok!"
+    compiled_success: "Compiled successfully with no errors"
+    status:
+      compilation_only: "Compilation Only"
+      compiling: "Compiling"
+      system_error: "System Error"
+      compile_error: "Compilation Error"
+      accepted: "Accepted"
+      wrong_answer: "Wrong Answer"
+      running: "Running"
+      time_limit: "Time Limit Exceeded"
+      sample_accepted: "Accepted on sample cases"
+      runtime_error: "Runtime Error with Status %{exitstatus}"
+      segmentation_fault: "Segmentation Fault"
+      no_sample_input: "No Sample Input"
+
+
+
+

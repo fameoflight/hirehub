@@ -1,0 +1,14 @@
+<% title 'Dashboard' %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Home', root_path %> <span class="divider">/</span>
+  </li>
+  <li class="active">Dashboard</li>
+</ul>
+
+<%= link_to "Invite New Candidate", new_invite_path, :class => "btn" %> 
+<%= link_to 'New Problem Set', new_collection_path, :class => "btn" %>
+<br/> <br/>
+
+<%= render :partial => 'shared/user_dashboard' %>

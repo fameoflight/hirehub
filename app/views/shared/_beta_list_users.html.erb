@@ -1,0 +1,38 @@
+<% if user_signed_in? && current_user.admin? %>
+    <h2> Beta Waiting Users </h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Requested</th>
+        <th>Invited</th>
+        <th>Accepted</th>
+        <th>Token</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% BetaListUser.all.each do |beta_list_user| %>
+          <tr>
+            <td><%= beta_list_user.name %></td>
+            <td><%= beta_list_user.email %></td>
+            <td><%= time_ago_in_words(beta_list_user.created_at) %> ago</td>
+            <td>
+              <% if beta_list_user.email_sent? %>
+                Yes
+              <% else %>
+                <% identifier = "grant-access-#{beta_list_user.id}" %>
+                <%= link_to 'Grant Access', grant_access_path(beta_list_user.id), :remote => true, :id => identifier, :class => 'grant-access-link' %>
+              <% end %>
+            </td>
+            <td><%= beta_list_user.accepted %> </td>
+            <td><%= beta_list_user.token %> </td>
+          </tr>
+          <tr>
+            <td> Note </td>
+            <td COLSPAN=5> <%= beta_list_user.note %> </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

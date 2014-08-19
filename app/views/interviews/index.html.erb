@@ -1,0 +1,29 @@
+<% title 'Interview Index' %>
+
+<h3>Listing interviews</h3>
+
+<table>
+  <tr>
+    <th>Candidate name</th>
+    <th>Candidate email</th>
+    <th>Start time</th>
+    <th>Timezone</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @interviews.each do |interview| %>
+      <tr>
+        <td><%= interview.candidate_name %></td>
+        <td><%= interview.candidate_email %></td>
+        <td><%= interview.start_time %></td>
+        <td><%= interview.timezone %></td>
+        <td><%= link_to 'Edit', edit_interview_path(interview) %></td>
+        <td><%= link_to 'Review', review_interview_path(interview.url_hash) %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Interview', new_interview_path, :class => 'btn' %>

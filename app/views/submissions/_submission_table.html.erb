@@ -1,0 +1,52 @@
+<br/>
+<div style="display:none;">
+  <div id="preview" style="width:660px;height:auto;overflow:hidden">Loading ...</div>
+</div>
+<h2> Submissions </h2>
+<hr/>
+<table>
+  <thead>
+  <tr>
+    <th>Submission</th>
+    <th>Problem Name</th>
+    <th>Language</th>
+    <!--<th>Execution Time</th>-->
+    <th>Time</th>
+    <th>Status</th>
+    <th>Score</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% submissions.each do |submission| %>
+      <tr>
+        <td>
+          <%= link_to submission.id, preview_submission_path(:id => submission.id), :remote => true, :class => "fancyBoxLink", "data-skip-pjax" => true %>
+        </td>
+        <td><%= submission.problem_name %></td>
+        <td><%= submission.humanize_lang %></td>
+        <td><%= time_ago_in_words(submission.created_at) %> ago</td>
+        <!--<td><%= submission.execution_time %></td>-->
+        <td><%= submission.status %></td>
+        <% if submission.judged %>
+            <td><%= submission.score %> </td>
+        <% else %>
+            <td><%= image_tag("waiting-atom.gif", :size => "32x32") %></td>
+        <% end %>
+      </tr>
+
+  <% end %>
+  </tbody>
+</table>
+
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $(".fancyBoxLink").fancybox({
+            'href': '#preview',
+            'transitionIn': 'elastic',
+            'transitionOut': 'elastic',
+            'autoScale': true,
+            'autoDimensions': true,
+        });
+    });
+</script>

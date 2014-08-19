@@ -1,0 +1,63 @@
+<% title 'SimpleHire Invite Solve' %>
+
+<%= render "countdown" %>
+
+<% if @invite.collection.problems.size > 0 %>
+    <h3> Problems</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Problem Name</th>
+        <th>Link</th>
+        <th>Score</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @invite.collection.problems.each do |problem| %>
+          <tr>
+            <td><%= link_to problem.name, invite_solve_problem_path(@url_hash, problem.id) %></td>
+            <td><%= link_to "Solve", invite_solve_problem_path(@url_hash, problem.id) %></td>
+            <td><%= problem.score %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <hr/>
+<% end %>
+
+<% if @invite.collection.code_problems.size > 0 %>
+    <h3> Code Problems</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Link</th>
+        <th>Score</th>
+        <th>Time Limit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @invite.collection.code_problems.each do |code_problem| %>
+          <tr>
+            <td><%= link_to code_problem.name, invite_solve_code_problem_path(@url_hash, code_problem.id) %></td>
+            <td><%= link_to 'Solve', invite_solve_code_problem_path(@url_hash, code_problem.id) %></td>
+            <td><%= code_problem.score %>
+            <td><%= code_problem.timeout %>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <hr/>
+<% end %>
+
+<% unless @invite.finished? %>
+    <% if @invite.has_relation(current_user.id) == 1 %>
+        <%= link_to ' Finish Invite', invite_finish_path(@url_hash), :class => "btn btn-danger icon-lock", :confirm => 'You will not be able to submit any solution after this.' %>
+    <% end %>
+    <%= link_to '  Refresh', invite_refresh_submission_path(@invite.url_hash), :class => 'btn btn-primary icon-refresh', :remote => true %>
+<% end %>
+<hr/>
+
+<div id="submission-view">
+  <%= render :partial => 'submissions/submission_table', :locals => {:submissions => @invite.submissions} %>
+</div>

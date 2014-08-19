@@ -1,0 +1,21 @@
+<% title ( t 'title.collection' ) %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to ( t 'title.home' ), root_path %> <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to ( t 'title.collection' ), collections_path %> <span class="divider">/</span>
+  </li>
+  <li class="active"><%= t 'title.new.collection' %></li>
+</ul>
+
+
+<h1><%= t 'title.new.collection' %></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', collections_path %>
+
+
+

@@ -1,0 +1,35 @@
+<div class="span3">
+  <ul class="nav nav-list" id="thingToDo">
+    <% if current_user.candidate? %>
+        <li class="nav-header">
+          <%= t 'constants.candidates' %>
+        </li>
+    <% end %>
+    <% if current_user.recruiter? %>
+        <li class="nav-header">
+          Recruiter
+        </li>
+        <li>
+          <%= link_to (t 'menu.dashboard'), dashboard_home_path %>
+        </li>
+        <li>
+          <%= link_to (t 'menu.new_problem'), new_problem_path %>
+        </li>
+        <li>
+          <%= link_to (t 'menu.new_collection'), new_collection_path %>
+        </li>
+        <li>
+          <%= link_to (t 'menu.invite_candidate'), new_invite_path %>
+        </li>
+        <!-- <li>
+          <%= link_to (t 'menu.interview_candidate'), new_interview_path %>
+        </li> -->
+    <% end %>
+  </ul>
+</div>
+<div class="span9">
+  <%= render :partial => 'shared/user_dashboard' %>
+  <% if show_intro? %>
+      <%= render :partial => 'home/intro' %>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+<%= simple_form_for("user", :url => user_session_path, :html => {:class => 'form-vertical'}) do |f| %>
+    <div class="inputs">
+      <%= f.input_field :email, :required => false, :autofocus => true, :placeholder => "email" %>
+      <%= f.input_field :password, :required => false, :placeholder => "password" %>
+      <%= f.label :remember_me, :class => "checkbox" do %>
+        <%= f.check_box :remember_me %>remember me
+     <% end %>
+    </div>
+    <div class="actions">
+      <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
+      <%= link_to "Forgot password?", new_password_path("user") %><br />
+      <% link_to 'Register', new_user_registration_path, :class => "btn" %>
+    </div>
+<% end %>

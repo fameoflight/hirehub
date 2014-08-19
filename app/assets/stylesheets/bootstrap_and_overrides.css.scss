@@ -1,0 +1,26 @@
+@import "bootswatch/spacelab/variables";
+
+// Set the correct sprite paths
+$iconSpritePath: image-path('glyphicons-halflings.png');
+$iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
+@import "bootstrap";
+@import 'font-awesome';
+
+body {
+  padding-top: 60px;
+}
+
+table {
+  @extend .table;
+  @extend .table-bordered;
+  @extend .table-striped;
+}
+
+@import "bootstrap-responsive";
+
+.form-inputs {
+  padding: 17px 20px 18px 20px;
+}
+
+// And finally bootswatch style itself
+@import "bootswatch/spacelab/bootswatch";

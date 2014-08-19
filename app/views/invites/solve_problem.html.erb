@@ -1,0 +1,30 @@
+<% title 'Invite Problem' %>
+<%= render "countdown" %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Invite', solve_invite_path(@invite.url_hash) %> <span class="divider">/</span>
+  </li>
+  <li class="active"><%= @problem.name %></li>
+</ul>
+
+<%= render(:partial => 'problems/display', :locals => {:problem => @problem}) %>
+
+<hr/>
+
+<% if @invite.candidate_id == current_user.id %>
+    <% if @invite.time_left > 0 %>
+        <%= simple_form_for(@submission, :html => {:class => 'well form-inline'}) do |f| %>
+            <%= f.error_notification %>
+            <%= f.input_field :submission_text, :as => 'string', :placeholder => 'type answer here', :input_html => {:size => 40, :maxlength => 4} %>
+            <%= f.hidden_field :problem_id, :value => @problem.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :judged, :value => false %>
+            <%= f.hidden_field :lang, :value => 'text' %>
+            <%= f.hidden_field :problem_type, :value => 'text' %>
+            <%= f.hidden_field :submittable_type, :value => 'Invite' %>
+            <%= f.hidden_field :submittable_id, :value => @invite.id %>
+            &#160;<%= f.button :submit, 'Submit', :name => 'submit', :class => 'btn-primary' %>
+        <% end %>
+    <% end %>
+<% end %>

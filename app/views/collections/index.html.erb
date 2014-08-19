@@ -1,0 +1,61 @@
+<% title ( t 'title.collection') %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to ( t 'title.home' ), root_path %> <span class="divider">/</span>
+  </li>
+  <li class="active"><%= t 'title.collection' %></li>
+</ul>
+
+<%= link_to (t 'title.new.collection'), new_collection_path, :class => "btn" %>
+<%= link_to (t 'title.new.invite'), new_invite_path, :class => "btn" %> 
+<%= link_to (t 'title.new.problem'), new_problem_path, :class => "btn" %>
+<br/><br/>
+
+<h1>Listing <%= t 'title.collection' %></h1>
+<div class="fbgreybox">
+  Problem Set are group of problems and code problems which can be used for multiple invite. You can create multiple problem sets with slight different problems to give different test to different level of candidates. We use different problem set for entry level programmer and experienced programmer. HireHub team can help you create problem set or team can create problem sets for you. Contact for more assistance. 
+</div>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Duration</th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @collections.each do |collection| %>
+      <tr>
+        <td><%= link_to collection.name, collection %></td>
+        <td><%= collection.humanize_duration %></td>
+        <td><%= link_to 'Show', collection %></td>
+        <td><%= link_to 'Edit', edit_collection_path(collection) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        var error_message = "<%= session[:new_collection_error] %>";
+        var error_message_url = "<%= session[:new_collection_error_url] %>";
+
+        if( error_message.length != 0 ) {
+          bootbox.dialog( error_message, [ 
+          {
+              "label" : "Yes",
+              "class" : "btn-primary",
+              "callback": function() {
+                  window.location = error_message_url
+              }
+          }, 
+          {
+              "label" : "No",
+              "class" : "btn"
+          }]);
+        }
+    });
+</script>
+

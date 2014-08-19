@@ -1,0 +1,25 @@
+<% if @save_fail %>
+$("#compile-message").html('<div class="fberrorbox">Empty Code Submission Not Allowed</div>');
+<% else %>
+<% if params[:compile] %>
+$("#compile-message").html("<%= escape_javascript( render( :partial => 'compile_message', :locals => { :compile_job => @compile_job} ) ) %>");
+<% end %>
+
+<% if params[:sample] %>
+<% unless @compile_job.success %>
+$("#compile-message").html("<%= escape_javascript( render( :partial => 'compile_message', :locals => { :compile_job => @compile_job} ) ) %>");
+<% else %>
+$("#compile-message").html("<%= escape_javascript( render( :partial => 'sample_testdata_display', :locals => { :sub_status => @sub_status, :expected_output => @expected_output, :user_output => @user_output, :compiler_output => @compiler_output} ) ) %>");
+$(".sample-data").each(function () {
+    $(this).html(function (index, html) {
+        output = html.replace(/^(.+)$/mg, "<li>$1</li>");
+    });
+    $(this).replaceWith('<ol class="lncode">' + output + '</ol>');
+});
+<% end %>
+<% end %>
+
+<% if params[:submit] %>
+window.location = "<%= solve_invite_url ( @invite.url_hash ) %>";
+<% end %>
+<% end %>

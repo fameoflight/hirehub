@@ -1,0 +1,7 @@
+<% if @success %>
+    $("#grant-access-<%=@beta_list_user.id%>").parent().html("Yes");
+
+    showNotificationBar("<%= t( 'beta_list.granted_access', :name => @beta_list_user.name) %>");
+<% else %>
+    showNotificationBar("<%= t( 'beta_list.granted_access_failure', :name => @beta_list_user.name) %>");
+<% end %>

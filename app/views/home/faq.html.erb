@@ -1,0 +1,73 @@
+<% title 'Frequently asked questions' %>
+<%= render 'lang_config' %>
+<%= render 'status_codes' %>
+<%= render 'common_error' %>
+
+<h3> Example Problem </h3>
+<hr/>
+
+<div class="well">
+  Your program is to use the brute-force approach in order to find the Answer to Life, the Universe, and Everything.
+  More precisely... rewrite small numbers from input to output. Stop processing input after reading in the number 42.
+  All numbers at input are integers of one or two digits.
+  <br/><br/>
+  Example
+  <br/><br/>
+  Input:<br/>
+  1<br/>
+  2<br/>
+  88<br/>
+  42<br/>
+  99<br/>
+  <br/><br/>
+  Output:<br/>
+  1<br/>
+  2<br/>
+  88<br/>
+</div>
+
+<h3> Example Solutions </h3>
+<br/>
+
+<h4> Solution in C++ </h4>
+<hr/>
+<%= raw syntax_highlight(render('home/language_examples/cpp'), 'cpp') %>
+<br/>
+
+<h4> Solution in C </h4>
+<hr/>
+<%= raw syntax_highlight(render('home/language_examples/c'), 'c') %>
+<br/>
+
+<h4> Solution in Java </h4>
+<hr/>
+<%= raw syntax_highlight(render('home/language_examples/java'), 'java') %>
+<br/>
+
+<h4> Solution in CSharp </h4>
+<hr/>
+<%= raw syntax_highlight(render('home/language_examples/csharp'), 'csharp') %>
+<br/>
+
+<h4> Solution in Python </h4>
+<hr/>
+<%= raw syntax_highlight(render('home/language_examples/python'), 'python') %>
+<br/>
+
+<h4> Solution in Ruby </h4>
+<hr/>
+<%= raw syntax_highlight(render('home/language_examples/ruby'), 'ruby') %>
+<br/>
+
+<h4> Solution in Scala </h4>
+<hr/>
+<%= raw syntax_highlight(render('home/language_examples/scala'), 'scala') %>
+<br/>
+
+<!--
+	<h4> Solution in Pascal </h4>
+	<hr />
+	<%= raw syntax_highlight(render('home/language_examples/pascal'), 'pascal') %>
+	<br />
+-->
+

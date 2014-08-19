@@ -1,0 +1,18 @@
+<% title 'Show Problem Set' %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Home', root_path %> <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to ( t 'title.collection' ), collections_path %> <span class="divider">/</span>
+  </li>
+  <li class="active">Show</li>
+</ul>
+
+<%= link_to 'New Problem Set', new_collection_path, :class => "btn" %> <%= link_to 'New Invite', new_invite_path, :class => "btn" %> <%= link_to 'Create New Problem', new_problem_path, :class => "btn" %>
+<br/><br/>
+
+<%= render :partial => 'display', :locals => {:collection => @collection} %>
+
+<%= link_to 'Back To Problem Set', collections_path, :class => 'btn' %>

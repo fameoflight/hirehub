@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+<p>Hello <%= @interview.candidate_name %>!</p>
+
+<p>
+  You are scheduled to interview on <%= t 'name' %> by <%= @interview.user.name %>
+  <br/><br/>
+  Your interview start at <%= time_tag @interview.start_time %>.
+  <br/><br/>
+  <%= link_to 'Click Here', datetime_link(@interview.start_time), :target => "_blank" %> to view time in other time
+  zones.
+  <br/><br/>
+</p>
+
+<% if @interview.candidate.no_login? %>
+
+    <p>
+      <%= link_to 'Setup Account', accept_user_invitation_url(@interview.candidate, :invitation_token => @interview.candidate.invitation_token) %>
+      by going to this link.
+      <br/><br/>
+      Once your account is setup, you can access the interview link below.
+    </p>
+
+<% end %>
+
+<p>
+  Please follow the <%= link_to "Interview Link", attend_interview_url(@interview.url_hash) %>. <br/><br/>
+
+  You can also copy paste the url if above clickable link is not working for you. <br/><br/>
+
+  <%= link_to attend_interview_url(@interview.url_hash), attend_interview_url(@interview.url_hash) %>.<br/><br/>
+</p>
+
+<p>Thanks for being part of <%= t 'name' %> and have a great day!</p>
+</body>
+</html>

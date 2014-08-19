@@ -1,0 +1,20 @@
+<div class='offset4 span3'>
+    <h2>Sign in</h2>
+    <hr />
+
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div class="inputs">
+          <%= f.input :email, :required => false, :autofocus => true, :placeholder => 'email' %>
+          <%= f.input :password, :required => false, :placeholder => 'password' %>
+          <%= f.label :remember_me, :class => "checkbox" do %>
+            <%= f.check_box :remember_me %>remember me
+         <% end %>
+        </div>
+        <br />
+        <div class="actions">
+          <%= f.button :submit, "Sign in" %>
+        </div>
+    <% end %>
+
+    <%= render :partial => "devise/shared/links" %>
+</div>

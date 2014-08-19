@@ -1,0 +1,52 @@
+<% if user_signed_in? %>
+    <% if current_user.invitations.size > 0 %>
+        <h2> Recieved Invitations </h2>
+        <table>
+          <thead>
+          <tr>
+            <th>Recruiter Name</th>
+            <th>Score</th>
+            <th>Recieved</th>
+            <th>Finished</th>
+            <th>Link</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% current_user.invitations.each do |invitation| %>
+              <tr>
+                <td> <%= invitation.user.name %> </td>
+                <td> <%= invitation.score %> </td>
+                <td> <%= time_ago_in_words(invitation.created_at) %> ago</td>
+                <td> <%= invitation.finished? ? 'Yes' : 'No' %> </td>
+                <td> <%= link_to 'Link', solve_invite_url(invitation.url_hash) %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    <% end %>
+    <% if current_user.interview_invites.size > 0 %>
+    <!--
+        <h2> Interview Invitations </h2>
+        <table>
+          <thead>
+          <tr>
+            <th>Recruiter Name</th>
+            <th>Recieved</th>
+            <th>Link</th>
+            <th>Start Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% current_user.interview_invites.each do |interview| %>
+              <tr>
+                <td> <%= interview.user.name %> </td>
+                <td> <%= time_ago_in_words(interview.created_at) %> ago</td>
+                <td> <%= link_to 'Link', attend_interview_path(interview.url_hash) %></td>
+                <td> <%= link_to interview.start_time.to_s, datetime_link(interview.start_time), :target => "_blank" %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+     -->
+    <% end %>
+<% end %>

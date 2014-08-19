@@ -1,0 +1,39 @@
+<h2 class="pull-right" id="countdown"></h2> <br/><br/>
+<hr/>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var timeleft =
+        <%= @invite.time_left %>
+        var myCounter = new Countdown({
+            seconds: timeleft,  // number of seconds to count down
+            onUpdateStatus: function (sec) {
+
+                if (sec == 0) {
+                    $('#countdown').text('Invite Over');
+                } else {
+                    if (sec < 0)
+                        $('#countdown').text('Invite Not Yet Started');
+                    else {
+                        $('#countdown').text(sec);
+                        $('#countdown').time_from_seconds();
+                    }
+                }
+            }, // callback for each second
+            onCounterEnd: function () {
+                if (timeleft > 0) {
+                    // bootbox.dialog("Invite Over, You can't submit anymore!", {
+                    //     "label" : "Ok",
+                    //     "class" : "success",   // or primary, or danger, or nothing at all
+                    //     "callback": function() {
+                    //         location.reload(true);
+                    //     }
+                    // });
+                    location.reload(true);
+                }
+            } // final action
+        });
+        myCounter.start();
+    });
+</script>

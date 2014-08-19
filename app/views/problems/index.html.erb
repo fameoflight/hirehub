@@ -1,0 +1,106 @@
+<% title 'Problem Index' %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Home', root_path %> <span class="divider">/</span>
+  </li>
+  <li class="active">Problem</li>
+</ul>
+
+<%= link_to 'New Problem', new_problem_path, :class => "btn" %><br /> <br/>
+
+<% if @code_problems.size != 0 %>
+  <h3>Code Problems</h3>
+  <div class="fbgreybox">
+    Code Problem is basic type of programming problem which require input and output. To make it easy to candidate understand problem, you have to provide sample input / output. HireHub team can help you create problem or team can create problem for you. Contact for more assistance.
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Problem Name</th>
+      <th>Score</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @code_problems.each do |code_problem| %>
+        <tr>
+          <td>
+            <%= link_to code_problem.name, preview_code_problem_path(:id => code_problem.id), :remote => true, :class => "fancyBoxLink", "data-skip-pjax" => true %>
+          </td>
+          <td><%= code_problem.score %></td>
+          <td><%= link_to 'Edit', edit_code_problem_path(code_problem) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>Code Problems</h3>
+  <div class="fbinfobox">
+    You don't have any code problem.
+  </div>
+<% end %>
+
+<hr />
+
+<% if @problems.size != 0 %>
+  <h3>Problems</h3>
+  <div class="fbgreybox">
+    Problem is basic type of problem whose answer is text input. These problem can be multiple choice, or mathematical in nature. HireHub team can help you create problem or team can create problem for you. Contact for more assistance.
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Score</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @problems.each do |problem| %>
+        <tr>
+          <td>
+            <%= link_to problem.name, preview_problem_path(:id => problem.id), :remote => true, :class => "fancyBoxLink", "data-skip-pjax" => true %>
+          </td>
+          <td><%= problem.score %>
+          <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>Problems</h3>
+  <div class="fbinfobox">
+    You don't have any problem.
+  </div>
+<% end %>
+
+
+<div style="display:none;">
+  <div id="preview" style="width:660px;height:auto;overflow:hidden">Loading ...</div>
+</div>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $(".fancyBoxLink").fancybox({
+            'href': '#preview',
+            'transitionIn': 'elastic',
+            'transitionOut': 'elastic',
+            'autoScale': true,
+            'autoDimensions': true,
+            onClosed: function() {
+              $("#preview").html("Loading...");
+            }
+          })
+        });
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#myTab a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        })
+    });
+</script>

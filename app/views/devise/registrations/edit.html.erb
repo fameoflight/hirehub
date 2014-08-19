@@ -1,0 +1,28 @@
+<% unless resource.demo_account? %>
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :class => 'form-horizontal'}) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="inputs">
+          <%= f.input :name, :required => true, :autofocus => true %>
+          <%= f.input :email, :required => true %>
+          <%= f.input :organization, :required => true %>
+          <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
+          <%= f.input :password_confirmation, :required => false %>
+          <%= f.input :role, :disabled => true, :hint => 'You cannot change your role.' %>
+          <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+          <%= f.input :timezone, :as => :time_zone %>
+        </div>
+
+        <div class="actions">
+          <%= f.button :submit, "Update" %>
+        </div>
+    <% end %>
+
+    <%= link_to "Back", :back %>
+<% else %>
+    <p class='lead' style="text-align: justify;">
+      You don't have permission to edit this account. This account is purely for demo purpose.
+    </p>
+<% end %>

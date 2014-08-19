@@ -1,0 +1,31 @@
+<% title 'Interview Show' %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Candidate name:</b>
+  <%= @interview.candidate_name %>
+</p>
+
+<p>
+  <b>Candidate email:</b>
+  <%= @interview.candidate_email %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @interview.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @interview.end_time %>
+</p>
+
+<p>
+  <b>Timezone:</b>
+  <%= @interview.timezone %>
+</p>
+
+<%= link_to 'Edit', edit_interview_path(@interview) %> |
+<%= link_to 'Back', interviews_path %>

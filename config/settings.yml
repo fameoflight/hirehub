@@ -1,0 +1,66 @@
+name: "HireHub"
+invite_credit: 50
+contact_email: 'contact@hirehub.me'
+demo_account_name: 'Demo Account'
+demo_account_email: 'demo@hirehub.me'
+
+#You need to change this in uploads.rake also
+uploadpath: '/var/deploy/hirehub/web_head/shared/uploads'
+
+google_analytics:
+    account: 'UA-32510207-1'
+    domain: 'hirehub.me'
+
+run_dir: '/var/deploy/hirehub/web_head/shared/run'
+c:
+ type: 'compiled'
+ ext: 'c'
+ binary_ext: 'exe'
+ box_cmd: '%1$s'
+ # box_cmd: 'box -a 2 -f -t 60 -- %1$s'
+ run_cmd: '%1$s < %2$s 1> %3$s 2> %4$s'
+ compile_cmd: 'gcc -O3 -Wall -std=c99 %1$s -o %2$s 2>&1 -lm'
+cpp:
+ type: 'compiled'
+ ext: 'cpp'
+ binary_ext: 'exe'
+ box_cmd: '%1$s'
+ # box_cmd: 'box -a 2 -f -t 60 -- %1$s'
+ run_cmd: '%1$s < %2$s 1> %3$s 2> %4$s'
+ compile_cmd: 'g++ -O3 -Wall %1$s -o %2$s 2>&1 -lm'
+csharp:
+ type: 'compiled'
+ ext: 'cs'
+ binary_ext: 'exe'
+ box_cmd: '%1$s'
+ run_cmd: 'mono -O=all %1$s < %2$s 1> %3$s 2> %4$s'
+ compile_cmd: 'gmcs -optimize %1$s -out:%2$s 2>&1'
+ruby:
+ type: 'scripting'
+ ext: 'rb'
+ box_cmd: '%1$s'
+ syntax_cmd: 'ruby -c %1$s 2>&1'
+ run_cmd: 'ruby -T3 %1$s < %2$s 1> %3$s 2> %4$s'
+python:
+ type: 'scripting'
+ ext: 'py'
+ box_cmd: '%1$s'
+ # box_cmd: 'box -a 3 -f -t 60 -- %1$s'
+ syntax_cmd: 'python -m py_compile %1$s 2>&1'
+ run_cmd: 'python -sS -OO %1$s < %2$s 1> %3$s 2> %4$s'
+java:
+ type: 'compiled'
+ ext: 'java'
+ binary_ext: 'class'
+ box_cmd: '%1$s'
+ # box_cmd: 'box -a 3 -f -t 60 -- %1$s'
+ run_cmd: 'java -classpath %5$s Solution < %2$s 1> %3$s 2> %4$s'
+ compile_cmd: 'javac %1$s -d %3$s 2>&1'
+scala:
+ type: 'compiled'
+ ext: 'scala'
+ binary_ext: 'class'
+ box_cmd: '%1$s'
+ # box_cmd: 'box -a 3 -f -t 60 -- %1$s'
+ run_cmd: 'scala -classpath %5$s Solution < %2$s 1> %3$s 2> %4$s'
+ compile_cmd: 'scalac %1$s -d %3$s 2>&1'

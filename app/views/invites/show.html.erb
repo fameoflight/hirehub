@@ -1,0 +1,31 @@
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Home', root_path %> <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to 'Invite', invites_path %> <span class="divider">/</span>
+  </li>
+  <li class="active">Show Invite</li>
+</ul>
+
+<p>
+  <b><%= t 'title.collection'%>:</b>
+  <%= @invite.collection.name %>
+</p>
+
+<p>
+  <b>Candidate email:</b>
+  <%= @invite.candidate_email %>
+</p>
+
+<p>
+  <b>Candidate email:</b>
+  <%= @invite.candidate_name %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%= @invite.score %>
+</p>
+
+<%= link_to 'Back', invites_path %>

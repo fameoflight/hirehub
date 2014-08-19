@@ -1,0 +1,1 @@
+worker: env RAILS_ENV=production rake jobs:work

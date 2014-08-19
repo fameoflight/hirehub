@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+    <% if current_user.demo_account? %>
+        <div class="fbinfobox">
+          <a class="close" data-dismiss="alert">×</a>
+          <h4>Warning!</h4>
+          This is a demo account and publicly accessible to everyone. Make sure you don't leave any private information
+          here.
+        </div>
+        <br/>
+    <% end %>
+<% end %>
+
+<% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">×</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    </div>
+<% end %>

@@ -1,0 +1,30 @@
+<hr/>
+
+<div class="fbbluebox">
+  <h4> Status</h4>
+  <%= sub_status %>
+</div>
+<hr/>
+
+<div class="fbinfobox">
+  <h4> Compiler Output</h4>
+  <%= simple_format raw compiler_output %>
+</div>
+<hr/>
+
+<h3> Expected Output </h3>
+<hr/>
+<div class='pre-scrollable'>
+  <div class='sample-data'>
+    <%= raw expected_output %>
+  </div>
+</div>
+<hr/>
+
+<h3> Your Output </h3>
+<hr/>
+<div class='pre-scrollable'>
+  <div class='sample-data'>
+    <%= raw user_output %>
+  </div>
+</div>

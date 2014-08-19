@@ -1,0 +1,16 @@
+<%= simple_form_for(@interview, :html => {:class => 'form-horizontal'}) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :candidate_name, :label => 'Candidate Name', :placeholder => 'name' %>
+      <%= f.input :candidate_email, :label => 'Candidate Email', :placeholder => 'email' %>
+      <%= f.input :start_time_date, :label => 'Start Date', :input_html => {"data-behaviour" => 'datepicker'} %>
+      <%= f.input :start_time_time, :label => 'Start Time', :input_html => {"data-behaviour" => 'timepicker'} %>
+      <%= f.input :timezone, :as => :time_zone, :include_blank => false, :hint => 'we will be sending the link in all time zone.' %>
+      <%= f.input :instruction, :label => 'Instruction', :input_html => { class: 'redactor' } %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+<% end %>

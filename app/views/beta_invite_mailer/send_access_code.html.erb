@@ -1,0 +1,15 @@
+Hi <%= @user.name %>,
+
+Our chef has prepared your invite. You can complete the next steps
+<%= link_to 'here', accept_user_invitation_url(@user, :invitation_token => @user.invitation_token) %>.
+We have added <%= @user.invite_balance %> invites to you account to let you test our service. Let us know if you need more.
+<br /><br />
+
+You can also copy the url directly to your browser to complete the next steps
+<br /><br />
+<%= accept_user_invitation_url(@user, :invitation_token => @user.invitation_token) %>
+
+<br /><br />
+Thanks<br />
+Team HireHub
+<%= Settings.contact_email %>

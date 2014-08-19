@@ -1,0 +1,85 @@
+<% title 'Invite CodeProblem' %>
+
+<%= render "countdown" %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Invite', solve_invite_path(@invite.url_hash) %> <span class="divider">/</span>
+  </li>
+  <li class="active"><%= @code_problem.name %></li>
+</ul>
+
+<%= render(:partial => 'code_problems/display', :locals => {:code_problem => @code_problem}) %>
+
+<hr/>
+<% if @invite.candidate_id == current_user.id %>
+    <% if @invite.time_left > 0 %>
+        <%= simple_form_for(@submission, :remote => true, :html => {:class => 'form-inline'}) do |f| %>
+            <%= f.error_notification %>
+            <%= f.input_field :lang, :collection => Submission.lang,
+                              :value_method => lambda { |e| "#{e.first}" },
+                              :label_method => lambda { |e| "#{e.second}" }, :include_blank => false %>
+            <br/><br/>
+            <div class="well">
+              <%= f.input_field :submission_text %>
+            </div>
+            <%= f.hidden_field :problem_id, :value => @code_problem.id %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :judged, :value => false %>
+            <%= f.hidden_field :problem_type, :value => 'code' %>
+            <%= f.hidden_field :submittable_type, :value => 'Invite' %>
+            <%= f.hidden_field :submittable_id, :value => @invite.id %>
+            <br/><br/>
+            <%= f.button :submit, 'Compile', :name => 'compile', :class => 'btn-warning' %>
+            <%= f.button :submit, 'Sample Test', :name => 'sample', :class => 'btn-success' %>
+            <%= f.button :submit, 'Submit', :name => 'submit', :class => 'btn-primary' %>
+        <% end %>
+        <div id="compile-message">
+          <% if params[:compile] %>
+              <%= render(:partial => 'compile_message', :locals => {:compile_job => @compile_job}) %>
+          <% end %>
+        </div>
+    <% end %>
+<% end %>
+
+<script type="text/javascript">
+
+    $('.btn-warning').click(function () {
+        $("#compile-message").html('<%= image_tag("waiting.gif", :size => "400x32") %>');
+    });
+
+     $('.btn-success').click(function () {
+        $("#compile-message").html('<%= image_tag("waiting.gif", :size => "400x32") %>');
+    });
+
+    $(window).load(function () {
+
+        var modesMap = {};
+        modesMap['c'] = 'text/x-csrc';
+        modesMap['cpp'] = 'text/x-c++src';
+        modesMap['java'] = 'text/x-java';
+        modesMap['csharp'] = 'text/x-csharp';
+        modesMap['python'] = 'text/x-python';
+        modesMap['ruby'] = 'text/x-ruby';
+        modesMap['scala'] = 'text/x-java';
+
+        var defaultMode = modesMap[ $('#submission_lang').val() ];
+        var textArea = document.getElementById("submission_submission_text");
+        var editor = CodeMirror.fromTextArea(textArea, {
+            lineNumbers: true,
+            matchBrackets: true,
+            mode: defaultMode,
+            theme: 'elegant',
+            smartIndent: true,
+            electricChars: true,
+            autoClearEmptyLines: true,
+            lineWrapping: true
+        });
+
+        $('#submission_lang').live('change', function () {
+            var select = $(this);
+            var newVal = select.val();
+            editor.setOption("mode", modesMap[newVal]);
+        });
+    });
+</script>

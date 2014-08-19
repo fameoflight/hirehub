@@ -1,0 +1,8 @@
+$("#submission-view").html("<%= escape_javascript( render :partial => 'submissions/submission_table' , :locals => { :submissions => @invite.submissions } ) %>");
+$(".fancyBoxLink").fancybox({
+    'href': '#preview',
+    'transitionIn': 'elastic',
+    'transitionOut': 'elastic',
+    'autoScale': true,
+    'autoDimensions': true,
+});

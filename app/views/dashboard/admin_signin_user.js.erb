@@ -1,0 +1,5 @@
+showNotificationBar( ' <%= @message %> ' );
+
+<% unless @redirect_url.nil? %>
+    window.location = "<%= @redirect_url %>";
+<% end %>

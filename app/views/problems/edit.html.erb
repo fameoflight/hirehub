@@ -1,0 +1,18 @@
+<% title 'Edit Problem' %>
+
+<ul class="breadcrumb">
+  <li>
+    <%= link_to 'Home', root_path %> <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to 'Problem', problems_path %> <span class="divider">/</span>
+  </li>
+  <li class="active">Edit Problem</li>
+</ul>
+
+<h3>Editing problem</h3>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @problem %> |
+<%= link_to 'Back', problems_path %>

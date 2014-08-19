@@ -1,0 +1,19 @@
+<h3><%= t 'title.new.code_problem' %></h3>
+<%= simple_form_for(@code_problem, :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :name, :hint => '(no special character)' %>
+      <%= f.input :statement, :label => 'Statement', input_html: { class: 'redactor' } %>
+      <%= f.input :sample_input, :as => :file, :hint => '(max file size 1mb)' %>
+      <%= f.input :sample_output, :as => :file, :hint => '(max file size 1mb)' %>
+      <%= f.input :input, :as => :file, :hint => '(max file size 10mb)' %>
+      <%= f.input :output, :as => :file, :hint => '(max file size 10mb)' %>
+      <%= f.input :score %>
+      <%= f.input :timeout, :hint => '(in seconds)' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+<% end %>

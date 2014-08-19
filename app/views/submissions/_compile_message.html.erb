@@ -1,0 +1,9 @@
+<% if compile_job.success %>
+    <div class="fbinfobox">
+      <%= simple_format raw compile_job.compiler_output %>
+    </div>
+<% else %>
+    <div class="fberrorbox">
+      <%= simple_format raw compile_job.compiler_output %>
+    </div>
+<% end %>

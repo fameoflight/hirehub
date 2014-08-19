@@ -1,0 +1,14 @@
+<%= simple_form_for(@invite, :html => {:class => 'form-horizontal'}) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :candidate_name %>
+      <%= f.input :candidate_email %>
+      <%= f.association :collection, :include_blank => false, :collection => current_user.collections %>
+      <%= f.input :instruction, :label => 'Instruction', :input_html => { class: 'redactor' } %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, 'Send Invite' %>
+    </div>
+<% end %>

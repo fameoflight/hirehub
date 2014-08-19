@@ -1,0 +1,17 @@
+
+<% if current_user.admin? %>
+    <%= render :partial => 'shared/signin_different_user' %>
+    <%= render :partial => 'shared/beta_list_users' %>
+<% end %>
+
+<% if current_user.candidate? %>
+    <%= render :partial => 'shared/candidate_invitations' %>
+<% end %>
+<% if current_user.recruiter? %>
+    <!--  <span class="pull-right label label-important" style="font-size: 16px; padding: 5px;">
+    <%= current_user.invite_balance %> invites left
+  </span> -->
+    <%= render :partial => 'shared/recruiter_invitations' %>
+    <%= render :partial => 'shared/candidate_invitations' %>
+<% end %>
+

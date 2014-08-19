@@ -1,0 +1,24 @@
+<%= simple_form_for(@collection, :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :duration, :minute_step => 5, :default => {:hour => 1, :minute => 30} %>
+      <%unless current_user.problems.blank? %>
+        <%= f.association :problems, :collection => current_user.problems, input_html: { class: 'multiselect' } %>
+      <% end %>
+      <%unless current_user.code_problems.blank? %>
+        <%= f.association :code_problems, :collection => current_user.code_problems, input_html: { class: 'multiselect' } %>
+      <% end %>
+    </div><br/>
+
+    <div class="form-actions">
+      <%= f.button :submit, ( t 'title.new.collection') %>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.multiselect').multiselect();
+  });
+</script>

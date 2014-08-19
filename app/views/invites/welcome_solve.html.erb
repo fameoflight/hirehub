@@ -1,0 +1,15 @@
+<% title 'Welcome' %>
+
+<div class="alert alert-info">
+  You have <%= @invite.collection.humanize_duration %> to finish the invite.
+</div>
+
+<div class="well">
+  <%= raw @invite.instruction %>
+</div>
+
+<%= simple_form_for @invite, :url => invite_agree_path(@invite.url_hash), :html => {:class => 'well form-inline'} do |f| %>
+    <%= f.error_notification %>
+    <%= f.input_field :agree %>
+    <%= f.button :submit, "I Agree" %>
+<% end %>
